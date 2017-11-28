@@ -13,12 +13,12 @@ import static trial.opengl.Constants.BYTES_PER_FLOAT;
  * Created by jprince on 27-Nov-17.
  */
 
-public class VertexData {
+public class VertexArray {
 
     private final FloatBuffer floatBuffer;
 
-    public VertexData(float[] vertexData){
-        floatBuffer = ByteBuffer.allocate(vertexData.length * BYTES_PER_FLOAT)
+    public VertexArray(float[] vertexData){
+        floatBuffer = ByteBuffer.allocateDirect(vertexData.length * BYTES_PER_FLOAT)
                                 .order(ByteOrder.nativeOrder())
                                 .asFloatBuffer()
                                 .put(vertexData);

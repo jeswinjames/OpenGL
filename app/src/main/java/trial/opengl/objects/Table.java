@@ -1,10 +1,10 @@
 package trial.opengl.objects;
 
-import android.opengl.GLES20;
+import trial.opengl.data.VertexArray;
+import trial.opengl.programs.TextureShaderProgram;
 
-import trial.opengl.data.VertexData;
-
-import static android.opengl.GLES20.*;
+import static android.opengl.GLES20.GL_TRIANGLE_FAN;
+import static android.opengl.GLES20.glDrawArrays;
 import static trial.opengl.Constants.BYTES_PER_FLOAT;
 
 /**
@@ -28,19 +28,19 @@ public class Table {
             -0.5f, -0.8f, 0f, 0.9f
     };
 
-    private final VertexData vertexData;
+    private final VertexArray vertexArray;
 
     public Table(){
-        vertexData = new VertexData(VERTEX_DATA);
+        vertexArray = new VertexArray(VERTEX_DATA);
     }
 
     public void bindData(TextureShaderProgram textureProgram){
-        vertexData.setVertexAttribPointer(
+        vertexArray.setVertexAttribPointer(
                 0,
                 textureProgram.getPositionAttributeLocation(),
                 POSITION_COMPONENT_COUNT,
                 STRIDE);
-        vertexData.setVertexAttribPointer(
+        vertexArray.setVertexAttribPointer(
                 POSITION_COMPONENT_COUNT,
                 textureProgram.getTextureCoordinatesAttributeLocation(),
                 TEXTURE_COMPONENT_COUNT,
@@ -48,6 +48,6 @@ public class Table {
     }
 
     public void draw(){
-        glDrawArrays(GL_TRIANGLE_FAN, 0, 2);
+        glDrawArrays(GL_TRIANGLE_FAN, 0, 6);
     }
 }

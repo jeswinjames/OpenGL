@@ -87,4 +87,13 @@ public class ShaderHelper {
         LoggerConfig.Log(tag, glGetProgramInfoLog(programbjectId));
         return validateStatus[0] != 0;
     }
+
+    public static int buildProgram(String vertexShaderSource, String fragmentShaderSource){
+        //Compile the shaders.
+        int vertexShader = compileVertexShader(vertexShaderSource);
+        int fragmentShader = compileFragmentShader(fragmentShaderSource);
+        int program = linkProgram(vertexShader, fragmentShader);
+        validateProgram(program);
+        return program;
+    }
 }
