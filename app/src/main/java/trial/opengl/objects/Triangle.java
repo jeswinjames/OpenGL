@@ -1,4 +1,4 @@
-package trial.opengl.Objects;
+package trial.opengl.objects;
 
 import android.opengl.GLES20;
 
